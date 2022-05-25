@@ -150,7 +150,7 @@ function validar_cel_tel(){
     var div = document.getElementById("msj-celular");
     if(celular == ""){
         if(telefono == ""){
-            div.innerHTML="NO";
+            div.innerHTML="debe de colocar almenos 1 numero de contacto";
             div.className="text-danger";
             return false;
         } else{
@@ -159,12 +159,12 @@ function validar_cel_tel(){
 
     } else{
         if(isNaN(celular)){
-            div.innerHTML="wea mala";
+            div.innerHTML="formato no valido";
             div.className="text-danger";
             return false;
         } else{
             if(isNaN(telefono)){
-                div.innerHTML="wea mala";
+                div.innerHTML="formato no valido";
                 div.className="text-danger";
                 return false;
             } else{
