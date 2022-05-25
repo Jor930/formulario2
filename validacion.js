@@ -7,12 +7,12 @@ function validar() {
     var result_val_local = validar_locate();
     var result_val_code = validar_code();
     var result_val_num = validar_cel_tel();
-    var result_val_cel = validar_cel();
-    var result_val_tel =validar_tel();
+    /*var result_val_cel = validar_cel();
+    var result_val_tel =validar_tel();*/
     var result_val_com = validar_comuna();
     var result_val_check = comprobar_Checks();
 
-    return (result_val_email && result_val_passw && result_val_rpassw && result_val_direcc && result_val_local && result_val_code && result_val_cel && result_val_tel &&result_val_num && result_val_com && result_val_check);
+    return (result_val_email && result_val_passw && result_val_rpassw && result_val_direcc && result_val_local && result_val_code && /*result_val_cel && result_val_tel &&*/ result_val_num && result_val_com && result_val_check);
 }
 
 function validar_formato_email(email){
@@ -144,47 +144,28 @@ function validar_comuna(){
         return true;
     }
 }
-
-function validar_cel(){
-    var celular = document.getElementById("celular").value;
-    var div = document.getElementById("msj-celular");
-    if(isNaN(celular)){
-        div.innerHTML="formato no valido";
-        div.className="text-danger";
-        return false}
-        else{
-            div.innerHTML = "";
-            return true;
-        }
-}
-
-function validar_tel(){
-    var telefono = document.getElementById("telefono").value;
-    var div = document.getElementById("msj-telefono");
-    if(isNaN(telefono)){
-        div.innerHTML="formato no valido";
-        div.className="text-danger";
-        return false}
-        else{
-            div.innerHTML = "";
-            return true;
-        }
-}
-
 function validar_cel_tel() {
     var celular = document.getElementById("celular").value;
     var telefono = document.getElementById("telefono").value;
     var div = document.getElementById("msj-celular");
-    if ( celular == "" && telefono == ""){
+    if ( celular != "" && telefono != ""){
+        if(isNaN(celular && telefono)==true){
+            div.innerHTML="formato no valido";
+            return false;
+        }else {
+            return true;
+        }    
+    }else {
         div.innerHTML = "debe de colocar almenos un numero de contacto";
         div.className="text-danger";
         return false;
-    }else {
-        div.innerHTML = "";
-        return true;
     }
 
 }
+
+
+
+
 
 function comprobar_Checks() {
     var checkbox = document.getElementsByName("gridCheck");
