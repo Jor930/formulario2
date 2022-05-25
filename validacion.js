@@ -144,23 +144,34 @@ function validar_comuna(){
         return true;
     }
 }
-function validar_cel_tel() {
+function validar_cel_tel(){
     var celular = document.getElementById("celular").value;
     var telefono = document.getElementById("telefono").value;
     var div = document.getElementById("msj-celular");
-    if ( celular != "" && telefono != ""){
-        if(isNaN(celular && telefono)==true){
-            div.innerHTML="formato no valido";
+    if(celular == ""){
+        if(telefono == ""){
+            div.innerHTML="NO";
+            div.className="text-danger";
             return false;
-        }else {
-            return true;
-        }    
-    }else {
-        div.innerHTML = "debe de colocar almenos un numero de contacto";
-        div.className="text-danger";
-        return false;
-    }
+        } else{
+            return true;        
+        }
 
+    } else{
+        if(isNaN(celular)){
+            div.innerHTML="wea mala";
+            div.className="text-danger";
+            return false;
+        } else{
+            if(isNaN(telefono)){
+                div.innerHTML="wea mala";
+                div.className="text-danger";
+                return false;
+            } else{
+                return true;
+            }
+        }
+    }
 }
 
 
